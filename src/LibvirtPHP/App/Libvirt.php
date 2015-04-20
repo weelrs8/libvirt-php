@@ -3,6 +3,7 @@
 namespace LibvirtPHP\App;
 
 use LibvirtPHP\Auth\InterfaceAuth;
+use LibvirtPHP\Manager\Domain;
 
 class Libvirt
 {
