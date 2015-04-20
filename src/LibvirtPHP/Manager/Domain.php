@@ -54,4 +54,14 @@ class Domain
     {
         return (bool) libvirt_domain_destroy($this->domain);
     }
+
+    /**
+     * Get Info
+     *
+     * @return array
+     */
+    public function getInfo()
+    {
+        return libvirt_domain_get_info($this->domain);
+    }
 }
