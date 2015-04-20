@@ -62,4 +62,9 @@ class Libvirt
 
         throw new \Exception("Dominio informado não existe: " . libvirt_get_last_error());
     }
+
+    public function getDomains()
+    {
+        return libvirt_list_domains($this->resource);
+    }
 }
