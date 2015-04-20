@@ -1,0 +1,25 @@
+{
+  "name": "weelrs8/libvirt-php",
+  "description": "Virtual Machine Manager",
+  "keywords": [
+    "libvirt",
+    "kvm",
+    "xen",
+    "php"
+  ],
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "Wellington R.",
+      "homepage": "http://www.zephx.com.br"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"LibvirtPHP\\": "src/LibvirtPHP/"}
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
