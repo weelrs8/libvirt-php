@@ -4,6 +4,9 @@ namespace LibvirtPHP\App;
 
 use LibvirtPHP\Auth\InterfaceAuth;
 use LibvirtPHP\Manager\Domain;
+use SSH\Auth\Password;
+use SSH\SSHConnection;
+use SSH\SSHAuthentication;
 
 class Libvirt
 {
@@ -107,21 +110,28 @@ class Libvirt
                 $disk['path'],
                 $disk['size'],
                 $network,
-                $path['path'],
+                $path['path'].'/'.$id,
                 $path['ks'],
                 $os['type'],
                 $os['variant'],
                 "/logs/{$id}.log"
             )
         ;
-        /*
-         * virt-install -n vm-02 -r 1024 --vcpus=1 \
-         * --disk path=/datastore/instances/vm-02.qcow2,size=20 \
-         * --network bridge=virbr0 \
-         * --location=http://172.17.10.110:8001/centos/6/os/x86_64/ \
-         * --extra-args "ks=http://172.17.10.110:8001/centos/6/centos.ks" \
-         * --graphics vnc,listen=0.0.0.0 --noautoconsole \
-         * --os-type=linux --os-variant=rhel6
-         */
+
+        return $this->ssh_run($cmd);
+    }
+
+    private function ssh_run($cmd)
+    {
+        $ssh = new SSHConnection();
+        $ssh->open('127.0.0.1');
+        $ssh->authenticate(
+            new Password(
+                'root',
+                '123456'
+            )
+        );
+
+        return $ssh->run($cmd);
     }
 }

@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "c006bff7ed19f62c26d2c9869e2729f2",
+    "packages": [
+        {
+            "name": "weelrs8/ssh",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/weelrs8/ssh.git",
+                "reference": "b72efabf4e34ebe798f6e957eb766275c385f6da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/weelrs8/ssh/zipball/b72efabf4e34ebe798f6e957eb766275c385f6da",
+                "reference": "b72efabf4e34ebe798f6e957eb766275c385f6da",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SSH\\": "src/SSH/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU"
+            ],
+            "authors": [
+                {
+                    "name": "Wellington R.",
+                    "homepage": "http://www.zephx.com.br"
+                }
+            ],
+            "description": "SSH Connection",
+            "keywords": [
+                "php",
+                "ssh"
+            ],
+            "time": "2015-04-23 17:26:36"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "weelrs8/ssh": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.5.0"
+    },
+    "platform-dev": []
+}

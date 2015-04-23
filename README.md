@@ -19,6 +19,31 @@ Conectando KVM TCP
         )
     );
 
+Construindo um Dominio
+----------------------
+
+    <?php
+
+    $app->newDomain(
+        100,
+        1,
+        1,
+        [
+            'size' => 10,
+            'path' => ini_get('libvirt.image_path')
+        ],
+        'bridge:br0',
+        [
+            'path' => 'http://172.17.10.180/centos/6.6/os/x86_64',
+            'ks'   => 'http://172.17.10.180/centos/6.6/ks.cfg'
+        ],
+        [
+            'type' => 'linux',
+            'variant' => 'rhel6'
+        ]
+    );
+
+
 Obtendo todos os dominios
 -------------------------
 

@@ -16,7 +16,7 @@
   ],
   "require": {
     "php" : ">=5.5.0",
-    "weelrs8/ssh": "1.0"
+    "weelrs8/ssh": "dev-master"
   },
   "autoload": {
     "psr-4": {"LibvirtPHP\\": "src/LibvirtPHP/"}
