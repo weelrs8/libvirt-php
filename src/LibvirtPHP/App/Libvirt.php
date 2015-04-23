@@ -94,7 +94,15 @@ class Libvirt
         $memory = (int) (1024 * (int) $memory);
         $disk['size'] = (int) $disk['size'];
 
-        $cmd =
+        $cmd = <<<EOF
+            nohup virt-install \
+            -n $id -r $memory --vcpus=$vcpu --disk path={$disk['path']},size={$disk['size']} \
+            --network $network --location={$path['path']}.'/'.$id --extra-args "ks={$path['ks']}" \
+            --graphics vnc,listen=0.0.0.0 --noautoconsole \
+            --os-type={$os['type']} --os-variant={$os['variant']} > /logs/$id.log > /logs/$id.log &
+EOF;
+
+        /*$cmd =
             sprintf(
                 "
                     nohup virt-install
@@ -116,8 +124,9 @@ class Libvirt
                 $os['variant'],
                 "/logs/{$id}.log"
             )
-        ;
+        ;*/
 
+        //return $cmd;
         return $this->ssh_run($cmd);
     }
 
