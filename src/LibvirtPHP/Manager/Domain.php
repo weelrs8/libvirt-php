@@ -37,10 +37,10 @@ class Domain
     }
 
     /**
-     * Restart
+     * Reboot
      * @return bool
      */
-    public function restart()
+    public function reboot()
     {
         return (bool) libvirt_domain_reboot($this->domain);
     }

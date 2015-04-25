@@ -57,3 +57,11 @@ Gerenciando um Domínio Específico
     <?php
 
     $app->getDomainManager('domain_id')->powerOn();
+
+    $app->getDomainManager('domain_id')->powerOff();
+
+    $app->getDomainManager('domain_id')->forceOff();
+
+    $app->getDomainManager('domain_id')->reboot();
+
+    $app->getDomainManager('domain_id')->getInfo();
