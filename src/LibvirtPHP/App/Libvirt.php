@@ -94,39 +94,36 @@ class Libvirt
         $memory = (int) (1024 * (int) $memory);
         $disk['size'] = (int) $disk['size'];
 
-        $cmd = <<<EOF
+        /*$cmd = <<<EOF
             nohup virt-install \
-            -n $id -r $memory --vcpus=$vcpu --disk path={$disk['path']},size={$disk['size']} \
-            --network $network --location={$path['path']}.'/'.$id --extra-args "ks={$path['ks']}" \
+            -n $id -r $memory --vcpus=$vcpu --disk path={$disk['path']}/$id,size={$disk['size']} \
+            --network $network --location={$path['path']} --extra-args "ks={$path['ks']}" \
             --graphics vnc,listen=0.0.0.0 --noautoconsole \
-            --os-type={$os['type']} --os-variant={$os['variant']} > /logs/$id.log > /logs/$id.log &
-EOF;
+            --os-type={$os['type']} --os-variant={$os['variant']} --wait=-1 > /logs/$id.log &
+EOF;*/
 
-        /*$cmd =
+        $cmd =
             sprintf(
-                "
-                    nohup virt-install
-                    -n %s -r %u --vcpus=%u --disk path=%s,size=%d
-                    --network %s --location=%s --extra-args \"ks=%s\"
-                    --graphics vnc,listen=0.0.0.0 --noautoconsole
-                    --os-type=%s --os-variant=%s
-                    > %s &
-                ",
+                'nohup virt-install \
+                 --name %s --ram %u --vcpus=%u --disk path=%s,size=%d \
+                 --network %s --location=%s --extra-args "ks=%s" \
+                 --graphics vnc,listen=0.0.0.0 --noautoconsole \
+                 --os-type=%s --os-variant=%s --wait=-1 > %s &
+                ',
                 $id,
                 $memory,
                 $vcpu,
-                $disk['path'],
+                $disk['path'].'/'.$id,
                 $disk['size'],
                 $network,
-                $path['path'].'/'.$id,
+                $path['path'],
                 $path['ks'],
                 $os['type'],
                 $os['variant'],
                 "/logs/{$id}.log"
             )
-        ;*/
+        ;
 
-        //return $cmd;
         return $this->ssh_run($cmd);
     }
 
